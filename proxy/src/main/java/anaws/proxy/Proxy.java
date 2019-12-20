@@ -38,10 +38,11 @@ public class Proxy {
 				System.out.println("Proxy started...");
 			}
 			else {
+				System.err.println("proxy requires 1 mandatory args: the type of mote used (z1 or cooja)");
 				return;
-			}
-			
-		}		
+			}	
+		}
+		System.err.println("proxy requires 1 mandatory args: the type of mote used (z1 or cooja)");
 	}
 	
 	Proxy(int n, int mote){

@@ -42,7 +42,7 @@ public class Client extends CoapClient {
 		relation = client.observe( new CoapHandler() {
 			
 								public void onLoad(CoapResponse response) {
-									System.out.println("[INFO] Client ID=" + id + " observes from Node ID="+ id + 1); // response.advanced().getSource() addr
+									System.out.println("[INFO] Client ID=" + id + " observes from Node ID="+ Integer.toString(id + 1)); // response.advanced().getSource() addr
 									resource[id] = response.getResponseText();
 												 
 								}
