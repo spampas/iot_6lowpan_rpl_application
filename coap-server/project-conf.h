@@ -2,19 +2,16 @@
 
 #define PROJECT_CONF_H_
 
-#undef NETSTACK_CONF_RDC
-#define NETSTACK_CONF_RDC nullrdc_driver
-
 // Configure Trickle /*******************/
 
 #undef RPL_CONF_DIO_REDUNDANCY 
-#define RPL_CONF_DIO_REDUNDANCY 2
+#define RPL_CONF_DIO_REDUNDANCY 6
 
 #undef RPL_CONF_DIO_INTERVAL_MIN 
-#define RPL_CONF_DIO_INTERVAL_MIN 3
+#define RPL_CONF_DIO_INTERVAL_MIN 7
 
 #undef RPL_CONF_DIO_INTERVAL_DOUBLINGS 
-#define RPL_CONF_DIO_INTERVAL_DOUBLINGS 5
+#define RPL_CONF_DIO_INTERVAL_DOUBLINGS 8
 
 /***************************************/
 
@@ -38,12 +35,12 @@
 //Configuration for RAM usage
 
 #undef NBR_TABLE_CONF_MAX_NEIGHBORS // Set the max number of entries in neighbors table 
-#define NBR_TABLE_CONF_MAX_NEIGHBORS 10
+#define NBR_TABLE_CONF_MAX_NEIGHBORS 5
 
 #undef UIP_CONF_MAX_ROUTES // Set the max number of routes handled by the node 
-#define UIP_CONF_MAX_ROUTES 35
+#define UIP_CONF_MAX_ROUTES 23
 
 #undef UIP_CONF_BUFFER_SIZE // Set the amount of memory reserved to the uIP packet buffer 
-#define UIP_CONF_BUFFER_SIZE 280
+#define UIP_CONF_BUFFER_SIZE 180
 
 #endif

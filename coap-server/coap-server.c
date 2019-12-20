@@ -62,6 +62,18 @@ void res_event_handler(){
 	
 }
 
+//print address when button is pressed
+static void print_addresses(){
+  int i;
+  printf("IPv6 addresses: ");
+  for(i = 0; i < UIP_DS6_ADDR_NB; i++){
+    if(uip_ds6_if.addr_list[i].isused){
+      uip_debug_ipaddr_print(&uip_ds6_if.addr_list[i].ipaddr);
+      printf("\n");
+    }
+  }
+}
+
 PROCESS_THREAD(coap, ev, data){
 	
 	PROCESS_BEGIN();
@@ -77,6 +89,7 @@ PROCESS_THREAD(coap, ev, data){
 	while(1){
 		PROCESS_WAIT_EVENT();
 		if(ev == sensors_event && data == &button_sensor){
+			print_addresses();
 			event_resource.trigger();
 		}	
 
