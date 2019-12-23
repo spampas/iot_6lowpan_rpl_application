@@ -1,4 +1,4 @@
-CONTIKI_PROJECT = coap-server
+CONTIKI_PROJECT = main
 all: $(CONTIKI_PROJECT)
 
 SMALL=1

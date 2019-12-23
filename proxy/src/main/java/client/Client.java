@@ -8,11 +8,10 @@ import org.eclipse.californium.core.CoapObserveRelation;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.CoAP.Code;
 import org.eclipse.californium.core.coap.CoAP.ResponseCode;
-
-import utilities.*;
-
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Request;
+
+import utilities.*;
 
 public class Client extends CoapClient {
 	
@@ -56,7 +55,7 @@ public class Client extends CoapClient {
 					System.out.println("[WARN] Server is not responding...");
            
             } catch(NumberFormatException nfe) {
-        		System.out.println("[WARN] You have to insert a mote ID between 1 and " + Parameters.MOTE_NUMBER); /////
+        		System.out.println("[WARN] You have to insert a mote ID between 1 and " + Parameters.MOTE_NUMBER);
         	}
 		}
 		
@@ -81,27 +80,34 @@ public class Client extends CoapClient {
 	}
 	
 	void getObserve() {
-		
+			
 		relation = client.observe(new CoapHandler() {
 			
 			public void onLoad(CoapResponse response) {
-				System.out.println("[INFO] ClientID=" + id + " observes from Node ID=" + Integer.toString(id + 1));
-				if(response.getCode() == ResponseCode.NOT_ACCEPTABLE) {
-					Utilities.fromSenMLToText(Integer.toString(id+ 1),response.getResponseText());
+				
+					System.out.println("[INFO] ClientID=" + id + " observes from MoteID=" + Integer.toString(id + 1));
+					
+					if(response.getCode() == ResponseCode.NOT_ACCEPTABLE)
+						
+						Utilities.fromSenMLToText(Integer.toString(id+ 1),response.getResponseText());
+					
+					else {
+						
+						resource[id] = response.getResponseText();
+						if(Parameters.DEBUG)
+							System.out.println("[DEBUG] MoteID gave value:\n" + resource[id] );
+						} 
+				
 				}
-				else {
-				resource[id] = response.getResponseText();
-				if(Parameters.DEBUG)
-					System.out.println("[DEBUG] MoteID gave value:\n" + resource[id] );
-				}
-			}
 			
 			public void onError() {
+				
 				System.err.println("[ERR] ClientID=" + id + " stopped observing");
+			
 			}
 			
 		});
-		
+	
 	}
 	
 }
