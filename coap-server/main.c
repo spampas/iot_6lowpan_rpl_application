@@ -45,7 +45,7 @@ void res_get_handler(void* request, void* response, uint8_t *buffer, uint16_t pr
 PERIODIC_RESOURCE(periodic_resource, "title=\"Mote periodic resourse\";rt=\"value\";obs", res_get_handler, NULL, NULL, NULL, CLOCK_SECOND*TIME, res_periodic_handler);
 EVENT_RESOURCE(event_resource, "title=\"Mote event resourse\";rt=\"value\";obs", res_get_handler, NULL, NULL, NULL, res_event_handler);
 
-// Simula sensore di temperatura
+// Simula sensore di temperatura periodico
 void res_periodic_handler(){
 	
 	// E' normale che il server risponda con un header non-confirmable:
@@ -57,10 +57,10 @@ void res_periodic_handler(){
 	
 }
 
-// Simula sensore di umidità
+// Simula sensore di temperatura a richiesta con pressione del pulsante
 void res_event_handler(){
 		
-	value = 50+random_rand() % 50;
+	value = 25 + random_rand() % 10;
 	
 	REST.notify_subscribers(&event_resource);
 	

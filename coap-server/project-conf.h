@@ -2,8 +2,6 @@
 
 #define PROJECT_CONF_H_
 
-#undef NETSTACK_CONF_RDC
-#define NETSTACK_CONF_RDC nullrdc_driver
 
 // Configuro Trickle /*******************/
 
@@ -35,6 +33,6 @@
 #define UIP_CONF_MAX_ROUTES 20
 
 #undef UIP_CONF_BUFFER_SIZE 				// Set the amount of memory reserved to the uIP packet buffer 
-#define UIP_CONF_BUFFER_SIZE 180
+#define UIP_CONF_BUFFER_SIZE 140
 
 #endif
