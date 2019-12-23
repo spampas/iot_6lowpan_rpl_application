@@ -7,6 +7,7 @@ import org.eclipse.californium.core.CoapHandler;
 import org.eclipse.californium.core.CoapObserveRelation;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.CoAP.Code;
+import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 
 import utilities.*;
 
@@ -23,11 +24,10 @@ public class Client extends CoapClient {
 	
 	public static void main(String args[]) {
 		
-		int N = Parameters.MOTE_NUMBER;
 		CoapClient client = new CoapClient("coap://127.0.0.1/database");
 		client.setTimeout(3000);
 		
-		System.out.println("[INFO] Node ID have an ID between 1 and " + N);
+		System.out.println("[INFO] Node ID have an ID between 1 and " + Parameters.MOTE_NUMBER);
 		System.out.println("Are you looking for what a node is doing? Digit Node ID or 'bye' to close the client application.");		
 
 		while(true){
@@ -85,16 +85,15 @@ public class Client extends CoapClient {
 		relation = client.observe(new CoapHandler() {
 			
 			public void onLoad(CoapResponse response) {
-				
-				
 				System.out.println("[INFO] ClientID=" + id + " observes from Node ID=" + Integer.toString(id + 1));
-				resource[id] = response.getResponseText(); // ERRORE!!!!!: AGGIUNGERE CONTROLLO
+				if(response.getCode() == ResponseCode.NOT_ACCEPTABLE) {
+					Utilities.fromSenMLToText(Integer.toString(id+ 1),response.getResponseText());
+				}
+				else {
+				resource[id] = response.getResponseText();
 				if(Parameters.DEBUG)
-					System.out.println("[DEBUG] MoteID gave value=" + resource[id] );
-				
-				/*String content = response.getResponseText();
-				System.out.println("[INFO] Client ID=" + id + " notified from Node ID="+ Integer.toString(id+1) +": "+ content); // response.advanced().getSource() addr
-				fromJsonToInt(content);*/
+					System.out.println("[DEBUG] MoteID gave value:\n" + resource[id] );
+				}
 			}
 			
 			public void onError() {

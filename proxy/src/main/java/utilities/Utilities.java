@@ -7,29 +7,7 @@ import teamethernet.senmlapi.Label;
 import teamethernet.senmlapi.SenMLAPI;
 
 public class Utilities {
-	
-	public static void main(String[] args) {
 		
-		try {
-			
-			SenMLAPI<?> senMLAPI = SenMLAPI.initJson();
-			senMLAPI.addRecord(Label.NAME.attachValue("value"), Label.UNIT.attachValue("A"), Label.VALUE.attachValue(1.2));
-			System.out.println(new String(senMLAPI.getSenML()));
-			byte[] json = senMLAPI.getSenML();
-			
-			SenMLAPI<?> senMLAPI2 = SenMLAPI.initJson(json);
-			double v = (double)senMLAPI2.getValue(Label.VALUE, 0);
-			
-			System.out.println(v);
-
-		}catch(IOException e) {
-			
-			System.out.println("Error...");
-			
-		}
-
-	}
-	
 	public static void fromSenMLToText(String value, String json){
 		
 		if(Parameters.DEBUG)
