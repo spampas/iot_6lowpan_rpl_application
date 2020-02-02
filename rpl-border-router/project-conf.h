@@ -58,14 +58,6 @@
 
 #undef UIP_CONF_MAX_ROUTES 
 #define UIP_CONF_MAX_ROUTES	       30			// Default: 30
-
-/* Define as minutes */
-#define RPL_CONF_DEFAULT_LIFETIME_UNIT   60
-
-/* 10 minutes lifetime of routes */
-#define RPL_CONF_DEFAULT_LIFETIME        10
-
-#define RPL_CONF_DEFAULT_ROUTE_INFINITE_LIFETIME 1
 /**************************************/
 
 #ifndef UIP_FALLBACK_INTERFACE
