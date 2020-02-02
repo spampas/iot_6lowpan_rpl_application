@@ -23,10 +23,14 @@ public class Client extends CoapClient {
 	
 	public static void main(String args[]) {
 		
+		if(args.length == 1) {
+			Parameters.MOTE_NUMBER = Integer.parseInt(args[0]);
+		}
+		
 		CoapClient client = new CoapClient("coap://127.0.0.1/database");
 		client.setTimeout(3000);
 		
-		System.out.println("[INFO] Node ID have an ID between 1 and " + Parameters.MOTE_NUMBER);
+		System.out.println("[INFO] Node ID has an ID between 1 and " + Parameters.MOTE_NUMBER);
 		System.out.println("Are you looking for what a node is doing? Digit Node ID or 'bye' to close the client application.");		
 
 		while(true){

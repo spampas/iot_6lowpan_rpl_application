@@ -31,48 +31,45 @@
 #ifndef PROJECT_ROUTER_CONF_H_
 #define PROJECT_ROUTER_CONF_H_
 
-#ifndef WITH_NON_STORING
-#define WITH_NON_STORING 0 				/* Set this to run with non-storing mode */
-#endif 							/* WITH_NON_STORING */
+#undef NETSTACK_CONF_RDC
+#define NETSTACK_CONF_RDC     nullrdc_driver
 
-#if WITH_NON_STORING
-#undef RPL_NS_CONF_LINK_NUM
-#define RPL_NS_CONF_LINK_NUM 40 			/* Number of links maintained at the root */
-
-// Configuro RPL ************************/
-#undef UIP_CONF_MAX_ROUTES
-#define UIP_CONF_MAX_ROUTES 40 				/* No need for routes */
-
-#undef RPL_OF_OCP
-#define RPL_OF_OCP RPL_OCP_OF0				// Use OF0
+// F0 /**********************************/
+#undef RPL_OF_OCP 
+#define RPL_OF_OCP  RPL_OCP_OF0
 /****************************************/
 
 // Configuro Trickle /*******************/
 
 #undef RPL_CONF_DIO_REDUNDANCY 
-#define RPL_CONF_DIO_REDUNDANCY 2
+#define RPL_CONF_DIO_REDUNDANCY 	2
 
 #undef RPL_CONF_DIO_INTERVAL_MIN 
-#define RPL_CONF_DIO_INTERVAL_MIN 8				// I_MIN 256 ms (2^8)
+#define RPL_CONF_DIO_INTERVAL_MIN 	4			// I_MIN 16 ms (2^4)
 
 #undef RPL_CONF_DIO_INTERVAL_DOUBLINGS 
-#define RPL_CONF_DIO_INTERVAL_DOUBLINGS 2		// I_MAX 1024 ms (2^(8+2))
+#define RPL_CONF_DIO_INTERVAL_DOUBLINGS 14		// I_MAX 4,37 min (2^(18))
 /***************************************/
 
-#undef RPL_CONF_MOP
-#define RPL_CONF_MOP RPL_MOP_NON_STORING 		/* Mode of operation*/
-#endif 							/* WITH_NON_STORING */
+// TABLES /*****************************/
+
+#undef NBR_TABLE_CONF_MAX_NEIGHBORS 
+#define NBR_TABLE_CONF_MAX_NEIGHBORS   15		// Default: 15
+
+#undef UIP_CONF_MAX_ROUTES 
+#define UIP_CONF_MAX_ROUTES	       30			// Default: 30
+
+/* Define as minutes */
+#define RPL_CONF_DEFAULT_LIFETIME_UNIT   60
+
+/* 10 minutes lifetime of routes */
+#define RPL_CONF_DEFAULT_LIFETIME        10
+
+#define RPL_CONF_DEFAULT_ROUTE_INFINITE_LIFETIME 1
+/**************************************/
 
 #ifndef UIP_FALLBACK_INTERFACE
 #define UIP_FALLBACK_INTERFACE rpl_interface
-#endif
-
-#ifndef QUEUEBUF_CONF_NUM
-#define QUEUEBUF_CONF_NUM		4
-#endif
-
-#ifndef UIP_CONF_BUFFER_SIZE
-#define UIP_CONF_BUFFER_SIZE    140
 #endif
 
 #ifndef UIP_CONF_RECEIVE_WINDOW
@@ -84,4 +81,3 @@
 #endif
 
 #endif /* PROJECT_ROUTER_CONF_H_ */
-

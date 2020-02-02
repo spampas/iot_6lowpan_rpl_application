@@ -9,6 +9,6 @@ public class Parameters {
 	public static String PREFIX_COOJA = "fd00::2"; 			// Address prefix Cooja mote	fd00:02X:X:X:X
 	public static String PATH = "mote/value";				// Resource path on mote
 	
-	public static final boolean DEBUG = false;				// Enable debug messages
+	public static final boolean DEBUG = true;				// Enable debug messages
 
 }

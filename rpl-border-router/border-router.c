@@ -96,6 +96,7 @@ PROCESS_THREAD(webserver_nogui_process, ev, data)
 {
   PROCESS_BEGIN();
 
+	PRINTF("WebServer started\n");
   httpd_init();
 
   while(1) {
