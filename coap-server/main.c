@@ -9,7 +9,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-#define TIME	10
+#define TIME	30
 
 PROCESS(coap, "CoAP Server");
 AUTOSTART_PROCESSES(&coap);

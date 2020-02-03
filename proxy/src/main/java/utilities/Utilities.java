@@ -22,6 +22,7 @@ public class Utilities {
 				System.out.println("Mote " + value + " gave value: " + senMLAPI.getValue(Label.VALUE, 0).toString());
 		
 		} catch(Exception e) {
+			e.printStackTrace();
 	    	System.out.println("[ERR] Something went wrong extracting from SenML");
 		}
 			

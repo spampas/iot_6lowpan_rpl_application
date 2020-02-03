@@ -36,7 +36,7 @@ public class Resource extends CoapResource {
 				
 					int id_mote = Integer.parseInt(value);
 					
-					if((id_mote > 0 && id_mote <= Parameters.MOTE_NUMBER) || !resource[id_mote - 1].equals("")) {
+					if((id_mote > 0 && id_mote <= Parameters.MOTE_NUMBER) && !resource[id_mote - 1].equals("")) {
 						
 						response = new Response(ResponseCode.CONTENT);
 						response.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
@@ -46,6 +46,7 @@ public class Resource extends CoapResource {
 						System.out.println("[INFO] Resource sent to the client");
 						
 					}else if(resource[id_mote - 1].equals("")) {
+						System.out.println("AAAAAAAAAA");
 						response = new Response(ResponseCode.NOT_ACCEPTABLE);
 						response.setPayload(Utilities.setErrorSenML("Content of moteID not present"));
 					}else{
