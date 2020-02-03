@@ -14,6 +14,6 @@
 /**************************************/
 
 #undef UIP_CONF_TCP 
-#define UIP_CONF_TCP					0		// Disable TCP
+#define UIP_CONF_TCP	0		// Disable TCP
 
 #endif

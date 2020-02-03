@@ -42,7 +42,7 @@
 // Configuro Trickle /*******************/
 
 #undef RPL_CONF_DIO_REDUNDANCY 
-#define RPL_CONF_DIO_REDUNDANCY 	2
+#define RPL_CONF_DIO_REDUNDANCY 	5
 
 #undef RPL_CONF_DIO_INTERVAL_MIN 
 #define RPL_CONF_DIO_INTERVAL_MIN 	4			// I_MIN 16 ms (2^4)
@@ -57,7 +57,7 @@
 #define NBR_TABLE_CONF_MAX_NEIGHBORS   15		// Default: 15
 
 #undef UIP_CONF_MAX_ROUTES 
-#define UIP_CONF_MAX_ROUTES	       30			// Default: 30
+#define UIP_CONF_MAX_ROUTES	       	   30		// Default: 30
 /**************************************/
 
 #ifndef UIP_FALLBACK_INTERFACE

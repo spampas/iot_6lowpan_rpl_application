@@ -3,11 +3,8 @@ package client;
 import java.util.Scanner;
 
 import org.eclipse.californium.core.CoapClient;
-import org.eclipse.californium.core.CoapHandler;
-import org.eclipse.californium.core.CoapObserveRelation;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.CoAP.Code;
-import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Request;
 
@@ -15,23 +12,14 @@ import utilities.*;
 
 public class Client extends CoapClient {
 	
-	String[] resource;
-	int id;
-	
-	CoapClient client;
-	CoapObserveRelation relation;
 	
 	public static void main(String args[]) {
-		
-		if(args.length == 1) {
-			Parameters.MOTE_NUMBER = Integer.parseInt(args[0]);
-		}
 		
 		CoapClient client = new CoapClient("coap://127.0.0.1/database");
 		client.setTimeout(3000);
 		
-		System.out.println("[INFO] Node ID has an ID between 1 and " + Parameters.MOTE_NUMBER);
-		System.out.println("Are you looking for what a node is doing? Digit Node ID or 'bye' to close the client application.");		
+		System.out.println("[INFO] Node ID have an ID between 1 and " + Parameters.MOTE_NUMBER);
+		System.out.println("Type a node ID to get its value or 'bye' to close the application.");		
 
 		while(true){
 			
@@ -63,55 +51,5 @@ public class Client extends CoapClient {
         	}
 		}
 		
-	}
-	
-	public Client(int cid, String address, String[] array){
-		
-		resource = array;		// Accedo alla sola risorsa del client
-		id = new Integer(cid);
-		client = new CoapClient("coap://[" + address + "]/" + Parameters.PATH);
-		System.out.println("[INFO] ClientID=" + id + " bind with " + address + " address");
-		client.setTimeout(5000);
-		
-		getObserve();
-		
-	}
-	
-	void deleteObserve() {
-		
-		relation.proactiveCancel();
-		
-	}
-	
-	void getObserve() {
-			
-		relation = client.observe(new CoapHandler() {
-			
-			public void onLoad(CoapResponse response) {
-				
-					System.out.println("[INFO] ClientID=" + id + " observes from MoteID=" + Integer.toString(id + 1));
-					
-					if(response.getCode() == ResponseCode.NOT_ACCEPTABLE)
-						
-						Utilities.fromSenMLToText(Integer.toString(id+ 1),response.getResponseText());
-					
-					else {
-						
-						resource[id] = response.getResponseText();
-						if(Parameters.DEBUG)
-							System.out.println("[DEBUG] MoteID gave value:\n" + resource[id] );
-						} 
-				
-				}
-			
-			public void onError() {
-				
-				System.err.println("[ERR] ClientID=" + id + " stopped observing");
-			
-			}
-			
-		});
-	
-	}
-	
+	}	
 }

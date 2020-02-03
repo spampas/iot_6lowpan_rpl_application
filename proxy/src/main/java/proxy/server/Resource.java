@@ -1,4 +1,4 @@
-package server;
+package proxy.server;
 
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.coap.CoAP.ResponseCode;
@@ -11,16 +11,6 @@ import utilities.*;
 public class Resource extends CoapResource {
 	
 	String[] resource;
-	
-	public static void main(String args[]) {
-		
-		String[] array = new String[Parameters.MOTE_NUMBER];
-		Resource res = new Resource("database",array);
-		
-		res.delete();
-		System.out.println("[INFO] Resource deleted");
-		
-	}
 	
 	public Resource(String name, String[] array) {
 		
@@ -46,7 +36,7 @@ public class Resource extends CoapResource {
 				
 					int id_mote = Integer.parseInt(value);
 					
-					if(id_mote > 0 && id_mote <= Parameters.MOTE_NUMBER) {
+					if((id_mote > 0 && id_mote <= Parameters.MOTE_NUMBER) || !resource[id_mote - 1].equals("")) {
 						
 						response = new Response(ResponseCode.CONTENT);
 						response.getOptions().setContentFormat(MediaTypeRegistry.APPLICATION_JSON);
@@ -55,6 +45,9 @@ public class Resource extends CoapResource {
 						response.setPayload(resource[id_mote - 1]);
 						System.out.println("[INFO] Resource sent to the client");
 						
+					}else if(resource[id_mote - 1].equals("")) {
+						response = new Response(ResponseCode.NOT_ACCEPTABLE);
+						response.setPayload(Utilities.setErrorSenML("Content of moteID not present"));
 					}else{
 						response = new Response(ResponseCode.NOT_ACCEPTABLE);
 						response.setPayload(Utilities.setErrorSenML("MoteID not valid"));
