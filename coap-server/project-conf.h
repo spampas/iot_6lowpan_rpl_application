@@ -10,10 +10,10 @@
 #define NBR_TABLE_CONF_MAX_NEIGHBORS   	10		// Default: 15
 
 #undef UIP_CONF_MAX_ROUTES 
-#define UIP_CONF_MAX_ROUTES	      		10		// Default: 30
+#define UIP_CONF_MAX_ROUTES	      	15		// Default: 30
 /**************************************/
 
 #undef UIP_CONF_TCP 
-#define UIP_CONF_TCP					0		// Disable TCP
+#define UIP_CONF_TCP	0		// Disable TCP
 
 #endif
