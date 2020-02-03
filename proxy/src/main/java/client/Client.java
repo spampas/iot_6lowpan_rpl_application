@@ -12,7 +12,6 @@ import utilities.*;
 
 public class Client extends CoapClient {
 	
-	
 	public static void main(String args[]) {
 		
 		CoapClient client = new CoapClient("coap://127.0.0.1/database");

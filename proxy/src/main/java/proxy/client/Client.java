@@ -49,21 +49,20 @@ public class Client extends CoapClient {
 				}
 			
 			public void onError() {
-				if(connection_attempts <= 3) {
+				
+				if(connection_attempts <= Parameters.ATTEMPTS) {
 					System.err.println("[INFO] MoteID=" + Integer.toString(id + 1) + " unreachable. ClientID=" + id + " tries again to observe from MoteID=" + Integer.toString(id + 1));
 					relation = client.observe(handler);
 					connection_attempts++;
-				}
-				else {
+				} else {
 					System.err.println("[ERR] ClientID=" + id + " stopped observing node with MoteID=" + Integer.toString(id + 1));
 				}
-				
 			
 			}
 			
 		};
 		
-		connection_attempts=0;
+		connection_attempts = 0;
 		
 		getObserve();
 		
