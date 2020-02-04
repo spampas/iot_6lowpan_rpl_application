@@ -42,7 +42,7 @@
 // Configuro Trickle /*******************/
 
 #undef RPL_CONF_DIO_REDUNDANCY 
-#define RPL_CONF_DIO_REDUNDANCY 	5
+#define RPL_CONF_DIO_REDUNDANCY 	2
 
 #undef RPL_CONF_DIO_INTERVAL_MIN 
 #define RPL_CONF_DIO_INTERVAL_MIN 	4			// I_MIN 16 ms (2^4)
