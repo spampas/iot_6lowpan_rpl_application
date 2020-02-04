@@ -10,7 +10,7 @@ import utilities.*;
 
 public class Resource extends CoapResource {
 	
-	String[] resource;
+	private String[] resource;
 	
 	public Resource(String name, String[] array) {
 		
@@ -46,8 +46,6 @@ public class Resource extends CoapResource {
 						System.out.println("[INFO] Resource sent to the client");
 						
 					}else if(resource[id_mote - 1].equals("")) {
-						if(Parameters.DEBUG)
-							System.out.println("[DEBUG] Resource not available from MoteID=" + id_mote);
 						response = new Response(ResponseCode.NOT_ACCEPTABLE);
 						response.setPayload(Utilities.setErrorSenML("Content of moteID not present"));
 					}else{

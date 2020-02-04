@@ -11,13 +11,13 @@ import utilities.*;
 
 public class Client extends CoapClient {
 	
-	String[] resource;
-	int id;
-	int connection_attempts;
+	private String[] resource;
+	private int id;
+	private int connection_attempts;
 	
-	CoapClient client;
-	CoapHandler handler;
-	CoapObserveRelation relation;
+	private CoapClient client;
+	private CoapHandler handler;
+	private CoapObserveRelation relation;
 	
 	public Client(int cid, String address, String[] array){
 		

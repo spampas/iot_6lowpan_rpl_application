@@ -6,10 +6,10 @@ import utilities.Parameters;
 
 public class Proxy {
 	
-	Server CoAPServer;
-	Client[] CoAPClients;
+	private Server CoAPServer;
+	private Client[] CoAPClients;
 	
-	String[] array;	// Cache
+	private String[] array;	// Cache
 
 	public static void main(String args[]) {
 		
