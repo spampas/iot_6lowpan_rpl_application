@@ -45,19 +45,19 @@
 #define RPL_CONF_DIO_REDUNDANCY 	2
 
 #undef RPL_CONF_DIO_INTERVAL_MIN 
-#define RPL_CONF_DIO_INTERVAL_MIN 	4			// I_MIN 16 ms (2^4)
+#define RPL_CONF_DIO_INTERVAL_MIN 	4	// I_MIN 16 ms (2^4)
 
 #undef RPL_CONF_DIO_INTERVAL_DOUBLINGS 
-#define RPL_CONF_DIO_INTERVAL_DOUBLINGS 14		// I_MAX 4,37 min (2^(18))
+#define RPL_CONF_DIO_INTERVAL_DOUBLINGS 14	// I_MAX 4,37 min (2^(18))
 /***************************************/
 
 // TABLES /*****************************/
 
 #undef NBR_TABLE_CONF_MAX_NEIGHBORS 
-#define NBR_TABLE_CONF_MAX_NEIGHBORS   15		// Default: 15
+#define NBR_TABLE_CONF_MAX_NEIGHBORS   15	// Default: 15
 
 #undef UIP_CONF_MAX_ROUTES 
-#define UIP_CONF_MAX_ROUTES	       	   30		// Default: 30
+#define UIP_CONF_MAX_ROUTES	       	   30	// Default: 30
 /**************************************/
 
 #ifndef UIP_FALLBACK_INTERFACE
