@@ -4,10 +4,6 @@
 #undef NETSTACK_CONF_RDC
 #define NETSTACK_CONF_RDC 	nullrdc_driver
 
-// F0 /**********************************/
-#undef RPL_OF_OCP 
-#define RPL_OF_OCP  RPL_OCP_OF0
-/****************************************/
 
 // Configuro Trickle /*******************/
 
