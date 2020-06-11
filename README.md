@@ -4,4 +4,4 @@ Client-Proxy-Server architecture that uses the CoAP application level protocol, 
 
 ![Image of the Architecture](/doc/img/architecture.png)
 
-To have more details, see the [documentation](/blob/master/doc/Project%20Documentation.pdf)
+To have more details, see the [documentation](/doc)
